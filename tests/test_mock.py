@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from src.aws import rm
+from src.test_learn import rm
 
 
 class RmTestMock(unittest.TestCase):
@@ -11,7 +11,7 @@ class RmTestMock(unittest.TestCase):
         with open(self.filename, 'w') as file:
             file.write('Delete me')
 
-    @mock.patch('aws.test_learn.os')
+    @mock.patch('src.test_learn.os')
     def test_rm(self, mock_os):
         rm("any path")
         # test that rm called os.remove with the right parameters

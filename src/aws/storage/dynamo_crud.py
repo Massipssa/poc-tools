@@ -1,4 +1,4 @@
-from src import aws as connector
+from src.aws import connector
 
 # connect to dynamo
 dynamodb = connector.session().resource('dynamodb')

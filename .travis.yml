@@ -4,18 +4,27 @@ python:
   - "3.7"
   - "3.6"
 
+env:
+  global:
+    - CODECOV_TOKEN="027102f2-b5d4-49c6-b80e-f9ffb64fbe89"
+
 # install required dependencies
 install:
   - pip install -r ./requirements/requirement-pyhton3.7.txt
+
+stages:
+  - test_3
 
 jobs:
   include:
     - name: test wiht python 3.6
       python: 3.6
-      stage: test
+      stage: test_2
     - name: test with python 3.7
       python: 3.7
-      stage: test
+      stage: test_3
+      script:
+        - coverage run -m pytest
 
 # run the build script
 script:
@@ -28,11 +37,10 @@ before_install:
 after_script:
   - echo "After script installation"
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  -
 deploy:
   - skip_cleanup: true
 after_deploy:
   - echo "After deploy"
-
-# enable or disable notifications
-notifications:
-  email: false

@@ -7,7 +7,7 @@ except ImportError:
 
 # Init ConfigParser and load --> externalize path 
 config = cp.ConfigParser()
-config.read("E:/DEV/dev-python/aws/conf/app.cfg")
+config.read("../../conf/app.cfg")
 
 
 def database_config():

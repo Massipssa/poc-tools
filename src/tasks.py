@@ -2,7 +2,7 @@ import logging
 from typing import List, Tuple, Optional, Union
 from celery import Celery
 from multiprocessing import cpu_count
-from src.aws import config
+from src.configuration import config
 
 log = logging.getLogger(__name__)
 

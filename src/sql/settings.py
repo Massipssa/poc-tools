@@ -1,9 +1,9 @@
 from sqlalchemy.orm.session import Session as SASession
 from sqlalchemy.engine import Engine, create_engine
 from sqlalchemy.orm import sessionmaker
-from src.sql import Base
+from src.sql.base import Base
 from typing import Optional
-from src.aws import config
+from src.configuration import config
 import logging
 
 log = logging.getLogger(__name__)
@@ -35,6 +35,7 @@ def create_session():
     Session = sessionmaker(bind=engine)
     session = Session()
     return session
+
 
 def dispose():
     global Session

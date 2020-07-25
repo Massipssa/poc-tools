@@ -1,7 +1,7 @@
 import logging
 from sqlalchemy import Column, Integer, String, Boolean
 from src.sql.settings import create_session
-from src.sql import Base
+from src.sql.base import Base
 
 log = logging.getLogger(__name__)
 

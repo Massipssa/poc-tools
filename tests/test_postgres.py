@@ -2,6 +2,7 @@ import unittest
 import pytest
 import datetime as dt
 
+
 @pytest.mark.integration("postgres")
 class TestPostgres(unittest.TestCase):
 

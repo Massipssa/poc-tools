@@ -1,7 +1,6 @@
-import os
 import unittest
 from unittest import mock
-from aws.test_learn import rm
+from src.aws import rm
 
 
 class RmTestMock(unittest.TestCase):

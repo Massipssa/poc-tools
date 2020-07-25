@@ -1,5 +1,5 @@
 import unittest
-from sql.model import Variable
+from src.sql import Variable
 
 
 class TestModel(unittest.TestCase):

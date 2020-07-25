@@ -1,7 +1,7 @@
 import unittest
 import pytest
 import os
-import aws.storage.dynamo_crud as dybamodb
+import src.aws.storage.dynamo_crud as dybamodb
 
 os.environ["AWS_REGION"] = (os.environ.get("AWS_REGION") or "east-us1")
 TABLE_NAME = 'subscribers'

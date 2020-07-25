@@ -1,5 +1,5 @@
 import unittest
-from aws.learn_python.tasks import CeleryExecutor
+from src.aws.learn_python import CeleryExecutor
 
 celery = CeleryExecutor
 

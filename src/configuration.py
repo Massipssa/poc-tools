@@ -7,7 +7,7 @@ except ImportError:
 
 # Init ConfigParser and load --> externalize path 
 config = cp.ConfigParser()
-config.read("../../conf/app.cfg")
+config.read("learn-python/conf/app.cfg")
 
 
 def database_config():

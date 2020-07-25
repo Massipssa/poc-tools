@@ -1,5 +1,5 @@
 import unittest
-from src.sql.session import create_session
+#from src.sql.session import create_session
 
 
 class TestSession(unittest.TestCase):

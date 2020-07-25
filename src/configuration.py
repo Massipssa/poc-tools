@@ -9,6 +9,7 @@ except ImportError:
     import configparser as cp
 
 filename = "../conf/app.cfg"
+print("Filename {}".format(filename))
 
 # Init ConfigParser and load --> externalize path 
 config = cp.ConfigParser()

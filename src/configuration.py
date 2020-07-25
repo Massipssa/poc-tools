@@ -1,13 +1,18 @@
 import logging
+import os
 
 try:
     import ConfigParser as cp
 except ImportError:
     import configparser as cp
 
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, '/learn-python/conf/app.cfg')
+    
+    
 # Init ConfigParser and load --> externalize path 
 config = cp.ConfigParser()
-config.read("/learn-python/conf/app.cfg")
+config.read(filename)
 
 
 def database_config():

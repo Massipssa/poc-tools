@@ -1,5 +1,5 @@
 from cryptography.fernet import Fernet
-from src.aws import config
+from src.configuration import config
 import logging
 
 log = logging.getLogger(__name__)

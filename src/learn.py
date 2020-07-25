@@ -1,6 +1,6 @@
 import logging
 from abc import abstractmethod
-from src.aws import config
+from src.configuration import config
 
 log = logging.getLogger(__name__)
 

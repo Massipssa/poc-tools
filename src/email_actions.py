@@ -2,7 +2,7 @@ import smtplib
 import logging
 from typing import List
 
-from src.aws import config
+from src.configuration import config
 from src.exceptions import ConfigException
 
 log = logging.getLogger(__name__)

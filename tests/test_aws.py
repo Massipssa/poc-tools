@@ -11,6 +11,7 @@ TABLE_NAME = 'subscribers'
 def supply_values():
     return [1, 2, 3]
 
+
 class AwsTest(unittest.TestCase):
 
     def test_select_by_name(self):

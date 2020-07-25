@@ -36,6 +36,7 @@ class CeleryExecutor:
     def this_is_classmethod(cls):
         print(cls.__name__)
 
+
 if __name__ == '__main__':
     celery = CeleryExecutor()
     celery.start()

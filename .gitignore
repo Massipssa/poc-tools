@@ -1,3 +1,4 @@
 .idea
 tests/.pytest_cache
 .pytest_cache
+src/api/*.log

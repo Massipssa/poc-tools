@@ -5,3 +5,8 @@ SQLAlchemy-Utils==0.36.3
 coverage==5.1
 boto3==1.14.28
 celery==4.4.2
+pypandoc
+pyspark==2.3.1
+
+# New
+psycopg2

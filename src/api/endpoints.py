@@ -1,10 +1,17 @@
-from flask import Flask, request, Response, jsonify, render_template
+from flask import Flask, request, Response, jsonify, render_template, session as Fsession, redirect, url_for
+from markupsafe import escape
 import json
-from src.sql import Variable
+from src.sql.model import Variable
 from src.sql.settings import create_session
 import logging
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+app.config.update(
+    TESTING=True,
+    SECRET_KEY=b'_5#y2L"F4Q8z\n\xec]/'
+)
 
 log = logging.getLogger(__name__)
 
@@ -16,9 +23,24 @@ def test():
     return jsonify(status='OK')
 
 
-@app.route("/hello/<user>")
-def index(user):
-    return render_template('hello.html', name=user)
+@app.route("/")
+def index():
+    if 'username' in Fsession:
+        return 'Logged in as %s' % escape(Fsession['username'])
+    return 'You are not logged in'
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        Fsession['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return '''
+        <form method="post">
+            <p><input type=text name=username>
+            <p><input type=submit value=Login>
+        </form>
+    '''
 
 
 @app.route("/api/variables")

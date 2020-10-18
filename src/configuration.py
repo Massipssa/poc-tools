@@ -1,5 +1,6 @@
 import logging
 import os
+from typing import Dict, Union, Optional
 
 try:
     import ConfigParser as cp
@@ -27,6 +28,9 @@ def database_config():
 
     return url, username, password
     
+
+def get_section(section: str) -> Optional[Dict[str, Union[str, int, float, bool]]]:
+    pass
 
 
 def get_kerberos() -> None:

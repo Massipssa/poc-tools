@@ -1,0 +1,17 @@
+smtp:
+  host: localhost
+  port: 4444
+  user: username
+  password: password
+  mail_from: test@gmail.com
+  starttls: True
+  smtp_ssl: False
+
+email:
+  from: kerrache.massipssa@gmail.com
+  to:
+    - kerrache.massipssa@gmail.com
+    - kerrache.massipssa@gmail.com
+  cc:
+    - kerrache.massipssa@gmail.com
+    - kerrache.massipssa@gmail.com

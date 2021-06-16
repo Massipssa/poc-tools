@@ -36,3 +36,10 @@ def get_section(section: str) -> Optional[Dict[str, Union[str, int, float, bool]
 def get_kerberos() -> None:
     pass
 
+"""
+Implement the ConfigParser to adapt our need
+"""
+class MyConfig(ConfigParser):
+    
+     def read(self, filenames, encoding=None):
+        super().read(filenames=filenames, encoding=encoding)

@@ -30,8 +30,10 @@ class TestEmail(unittest.TestCase):
         self.assertRaises(
             TypeError, email_sender.get_email_address_list, emails_list)
 
+    """
     @mock.patch('src.utils.email')
     def test_send_email_once(self, mock_send_email):
         res = email_sender.send_email('to', 'subject', 'content')
         mock_send_email.assert_called_once_with('to', 'subject', 'content')
         self.assertEqual(mock_send_email.return_value, res)
+    """

@@ -1,6 +1,5 @@
 import unittest
 from unittest import mock
-from src.test_learn import rm
 
 
 class RmTestMock(unittest.TestCase):

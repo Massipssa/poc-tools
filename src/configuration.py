@@ -7,7 +7,6 @@ try:
 except ImportError:
     import configparser as cp
 
-
 log = logging.getLogger(__name__)
 logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
@@ -27,7 +26,7 @@ def database_config():
     log.debug("URL {}, Username {},password {}".format(url, username, "********"))
 
     return url, username, password
-    
+
 
 def get_section(section: str) -> Optional[Dict[str, Union[str, int, float, bool]]]:
     pass
@@ -36,10 +35,17 @@ def get_section(section: str) -> Optional[Dict[str, Union[str, int, float, bool]
 def get_kerberos() -> None:
     pass
 
+
+class ConfigParser:
+    pass
+
+
 """
 Implement the ConfigParser to adapt our need
 """
+
+
 class MyConfig(ConfigParser):
-    
-     def read(self, filenames, encoding=None):
+
+    def read(self, filenames, encoding=None):
         super().read(filenames=filenames, encoding=encoding)

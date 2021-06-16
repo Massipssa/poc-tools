@@ -10,7 +10,7 @@ env:
 
 # install required dependencies
 install:
-  - pip install -r ./requirements/requirement-pyhton3.7.txt
+  - pip install -r ./requirements/requirements-python3.7.txt
 
 stages:
   - test_3

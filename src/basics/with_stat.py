@@ -12,7 +12,7 @@ class FileManager:
         self.file = open(self.file_name, 'w')
         return self.file
 
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_val):
         self.file.close()
 
 

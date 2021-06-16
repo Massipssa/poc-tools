@@ -3,7 +3,7 @@ import pytest
 import datetime as dt
 
 
-@pytest.mark.integration("postgres")
+#@pytest.mark.integration("postgres")
 class TestPostgres(unittest.TestCase):
 
     def test_func(self):

@@ -1,9 +1,13 @@
-from flask import Flask, request, Response, jsonify, render_template, session as Fsession, redirect, url_for
-from markupsafe import escape
 import json
+import logging
+
+from flask import Flask, request, Response, jsonify, render_template, session as Fsession, redirect, url_for
+from functools import wraps
+from markupsafe import escape
+from typing import Callable, TypeVar, cast
+
 from src.sql.model import Variable
 from src.sql.settings import create_session
-import logging
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -16,6 +20,16 @@ app.config.update(
 log = logging.getLogger(__name__)
 
 session = None
+
+
+T =TypeVar("T", bound=Callable)
+
+
+def requires_authentication(function: T):
+    @wraps(function)
+    def decorated():
+        return True
+    return cast(T, decorated)
 
 
 @app.route("/test")
@@ -50,6 +64,7 @@ def get_all_variables():
 
 
 @app.route('/api/variables/<key>', methods=['GET'])
+@requires_authentication
 def get_by_id(key):
     log.debug("Key: {}".format(key))
     item = Variable.get_by_key(key=key)

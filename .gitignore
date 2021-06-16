@@ -2,3 +2,6 @@
 tests/.pytest_cache
 .pytest_cache
 src/api/*.log
+venv
+*__pycache__/
+*.log

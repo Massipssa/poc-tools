@@ -1,3 +1,6 @@
+logging:
+  path: path/to/log/file
+  loging_level: debug
 smtp:
   host: localhost
   port: 4444
@@ -6,7 +9,6 @@ smtp:
   mail_from: test@gmail.com
   starttls: True
   smtp_ssl: False
-
 email:
   from: kerrache.massipssa@gmail.com
   to:

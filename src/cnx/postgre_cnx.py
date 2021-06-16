@@ -2,7 +2,7 @@ import psycopg2
 import xlsxwriter
 import logging
 import requests
-from src.model.database import Database
+from src.models.database import Database
 from src.exceptions import InvalidFilePath
 
 

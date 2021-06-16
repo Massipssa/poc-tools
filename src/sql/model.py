@@ -1,5 +1,6 @@
 import logging
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy.orm import backref, relationship
 from src.sql.settings import create_session
 from src.sql.base import Base
 
@@ -16,10 +17,11 @@ class Variable(Base):
     is_encrypted = Column(Boolean, unique=False, default=False)
 
     def __str__(self):
-        pass
+        return "%d, %s" % (self.id, self._key)
 
     def __repr__(self):
-        return 'Id: {}, Key: {}, Value: {}, Is_encrypted: {}'.format(self.id, self._key, self.value, self.is_encrypted)
+        return f'Id: {self.id}, Key: {self._key},' \
+               f' Value: {self.value}, Is_encrypted: {self.is_encrypted}'
 
     @classmethod
     #@provide_session
@@ -64,6 +66,7 @@ class Variable(Base):
             'is_encrypted': self.is_encrypted,
         }
 
+
 class Task(Base):
 
     __tablename__ = 'tasks'
@@ -73,8 +76,27 @@ class Task(Base):
     _try_number = Column('Try_number', Integer, default=0)
     pool = Column(String(50), nullable=False)
     pool_slot = Column(Integer, default=1)
+    job_id = Column(Integer, )
 
     #def __init__(self):
+
+
+class Job(Base):
+
+    __tablename__ = "jobs"
+    id = Column(Integer, primary_key=True)
+    state = Column(String(20))
+    start_date = Column(DateTime)
+    end_date = Column(DateTime)
+
+    # Relatioship
+    tasks_instances = relationship(
+        Task,
+        primaryjoin=id == Task.job_id,
+        foreign_keys=id,
+        backref=backref('queued_by_job', uselist=False),
+    )
+
 
 
 """

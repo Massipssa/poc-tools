@@ -14,6 +14,19 @@ Session: Optional[SASession] = None
 DB_URL = config.get('database', "db_url")
 
 
+class SqlDatabase:
+    def __init__(self, db_url):
+        self.db_url = db_url
+
+    def create_db_engine(self):
+        global engine
+        log.debug(f"DB_URL {self.db_url}")
+        if self.db_url is not None:
+            engine = create_engine(self.db_url)
+            log.info("Engine created")
+            return engine
+
+
 def create_conn():
     global engine
     log.debug("DB_URL %s".format(DB_URL))

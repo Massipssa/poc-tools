@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    /*
-    tools {
-        scannerHome 'SonarQubeScanner'
-    }
-    */
     stages {
 
         stage('SonarQube analysis') {

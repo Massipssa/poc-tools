@@ -1,4 +1,7 @@
 import tempfile
+import logging
+
+log = logging.getLogger(__name__)
 
 
 def uncompress_file():
@@ -14,9 +17,5 @@ def create_temp_file():
     with tempfile.NamedTemporaryFile(mode='wb+',
                                      dir=tmp_dir,
                                      delete=False) as f_txt:
-        print(f_txt.name)
+        log.debug(f"Tmp file name {f_txt.name}")
         f_txt.writelines([line_1, line_2, line_3])
-
-
-if __name__ == '__main__':
-    create_temp_file()

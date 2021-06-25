@@ -30,6 +30,15 @@ class TestPostgres(unittest.TestCase):
         var = "Hello,world"
         self.assertEqual(var.split(","), ["Hello", "world"])
 
+    @pytest.mark.integration("rabbitmq")
+    @pytest.mark.backend("postgres")
+    def test_select_all(self):
+        pass
 
-    # def test_select_all(self):
-    #     pass
+    @pytest.mark.parametrize("name", [
+        "name1",
+        "name2",
+        "name3",
+    ])
+    def test_upper_name(self, name):
+        print(name)

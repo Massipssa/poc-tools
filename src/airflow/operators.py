@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
-from airflow.operators.mysql_operator import MySqlOperator
-from airflow.operators.postgres_operator import PostgresOperator
+from airflow.providers.mysql.operators.mysql import MySqlOperator
+from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow import DAG
 
 default_args = {

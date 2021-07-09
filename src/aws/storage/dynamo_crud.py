@@ -52,4 +52,3 @@ def create_table(table_name):
 
     # Print out some data about the table.
     print(table.item_count)
-

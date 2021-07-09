@@ -1,6 +1,7 @@
-import unittest
-import pytest
 import datetime as dt
+import unittest
+
+import pytest
 
 
 #@pytest.mark.integration("postgres")

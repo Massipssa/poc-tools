@@ -1,13 +1,13 @@
+import io
 import os
-
 from os.path import dirname
-from setuptools import Command, find_packages, setup
 
+from setuptools import Command, find_packages, setup
 
 current_dir = dirname(__file__)
 
 try:
-    with open(os.path.join(current_dir + 'README.md'), encoding='utf-8') as f:
+    with io.open(os.path.join(current_dir + 'README.md'), encoding='utf-8') as f:
         long_description = f.read()
 except FileNotFoundError:
     long_description = ''

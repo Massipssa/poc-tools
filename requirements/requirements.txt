@@ -5,9 +5,13 @@ SQLAlchemy-Utils==0.36.3
 coverage==5.1
 boto3==1.14.28
 celery==4.4.2
-pypandoc
-pyspark==2.3.1
+pypandoc==1.5
+py4j==0.10.9
+pyspark==3.1.1
 
+## Azure
+azure-mgmt-resource==18.0.0
+azure-identity==1.6.0
 # New
 psycopg2
 flake8

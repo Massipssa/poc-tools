@@ -1,5 +1,7 @@
 import unittest
-from src.spark.dataframe import explain_df, read_csv, top_five_destinations
+
+from src.spark.dataframe import (explain_df, read_csv, rows,
+                                 top_five_destinations)
 
 
 class TestDataframe(unittest.TestCase):
@@ -11,5 +13,13 @@ class TestDataframe(unittest.TestCase):
 
     def test_top_five_destinations(self):
         df = read_csv(self.path)
+        # info about df
+        print(df.schema)
+        print(df.columns)
+        df.printSchema()
+
         top_five_destinations(df)
+
+    def test_rows(self):
+        rows()
 

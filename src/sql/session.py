@@ -1,6 +1,6 @@
 from functools import wraps
 
-from src.sql import settings
+from src import settings
 
 
 def create_session():

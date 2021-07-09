@@ -1,6 +1,5 @@
 # import pandas
 import boto3
-
 from bin.connector import create_client
 
 client = create_client('kinesis', 'eu-west-3')

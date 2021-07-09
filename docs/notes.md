@@ -6,7 +6,7 @@
 - __str__ vs __repr__
     - str: compute informal representation of string (for end user)
     - repr: compute official representation of string (to more precise, for debug and dev)
-- **dir**: return list of attributes and methods of any object  
+- **dir**: return list of attributes and methods of any object
 
 
 ## Testing

@@ -1,6 +1,7 @@
 import logging
-from abc import abstractmethod, ABC
-from src.configuration import config
+from abc import ABC, abstractmethod
+
+from src.configuration import conf
 
 log = logging.getLogger(__name__)
 
@@ -72,7 +73,7 @@ def get_fernet():
     global _fernet
 
     try:
-        fernet_key = config.get('core', 'ccccc')
+        fernet_key = conf.get('core', 'ccccc')
         if not fernet_key:
             log.warning("Encryption key is null")             
     except Exception as ex:

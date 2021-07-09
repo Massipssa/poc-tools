@@ -1,13 +1,13 @@
 
 - RabbitMq docker image
- 
-    ``` 
-    docker run -d -p 15672:15672 -p 5672:5672 \ 
+
+    ```
+    docker run -d -p 15672:15672 -p 5672:5672 \
         --name rabbitMq \
         rabbitmq:3-management
     ```
 
-- Install celery 
+- Install celery
 
     ```pip install celery```
 

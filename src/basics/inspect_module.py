@@ -1,9 +1,9 @@
 import re
-from static_class_method import Person
 from collections import defaultdict
-
-from typing import List, Optional, NamedTuple, Dict, Tuple
 from inspect import signature
+from typing import Dict, List, NamedTuple, Optional, Tuple
+
+from static_class_method import Person
 
 
 class FileSyntaxError(NamedTuple):
@@ -61,4 +61,3 @@ if __name__ == '__main__':
 
     print('*' * 80)
     print(parse_env_file("myapp.log"))
-

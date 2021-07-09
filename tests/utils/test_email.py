@@ -1,7 +1,8 @@
 import unittest
-import mock
-from src.utils import email_sender
 
+import mock
+
+from src.utils import email_sender
 
 EMAILS = ["test1@email.com", "test2@email.com"]
 

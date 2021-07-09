@@ -1,5 +1,6 @@
 import unittest
-from src.spark.basics import odds_numbers, count_word
+
+from src.spark.basics import count_word, odds_numbers
 
 
 class TestBasics(unittest.TestCase):

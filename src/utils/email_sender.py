@@ -1,14 +1,14 @@
-import smtplib
-import logging
 import collections.abc
-from typing import List, Iterable, Union
-from email.mime.multipart import MIMEMultipart
+import logging
+import os
+import smtplib
 from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
-import os
+from typing import Iterable, List, Union
 
-from src.configuration import config
+from src.configuration import conf
 from src.exceptions import ConfigException
 
 log = logging.getLogger(__name__)
@@ -16,16 +16,16 @@ log = logging.getLogger(__name__)
 
 def send_smtp_email(from_email, to_email, msg):
 
-    smtp_host = config.get('smtp', 'SMTP_HOST')
-    smtp_port = config.getint('smtp', 'SMTP_PORT')
-    smtp_starttls = config.getboolean('smtp', 'SMTP_STARTTLS')
-    smtp_ssl = config.getboolean('smtp', 'SMTP_SSL')
+    smtp_host = conf.get('smtp', 'SMTP_HOST')
+    smtp_port = conf.getint('smtp', 'SMTP_PORT')
+    smtp_starttls = conf.getboolean('smtp', 'SMTP_STARTTLS')
+    smtp_ssl = conf.getboolean('smtp', 'SMTP_SSL')
     smtp_user = None
     smtp_password = None
 
     try:
-        smtp_user = config.get('smtp', 'SMTP_USER')
-        smtp_password = config.get('smtp', 'SMTP_PASSWORD')
+        smtp_user = conf.get('smtp', 'SMTP_USER')
+        smtp_password = conf.get('smtp', 'SMTP_PASSWORD')
     except ConfigException:
         log.error("User/Password was not provided for SMTP connection")
 
@@ -39,9 +39,9 @@ def send_smtp_email(from_email, to_email, msg):
 
 
 def get_email_details():
-    to = config.get('email', 'TO')
-    cc = config.getint('email', 'CC')
-    subject = config.getboolean('email', 'SUBJECT')
+    to = conf.get('email', 'TO')
+    cc = conf.getint('email', 'CC')
+    subject = conf.getboolean('email', 'SUBJECT')
 
     to_list = get_email_address_list(to)
     to_comma_separated = ", ".join(to_list)
@@ -55,10 +55,10 @@ def get_email_details():
 
 def send_email(body, file_name):
 
-    mail_to = config.get('email', 'FROM')
-    mail_from = config.get('email', 'TO')
-    cc = config.get('email', 'CC')
-    subject = config.get('email', 'SUBJECT')
+    mail_to = conf.get('email', 'FROM')
+    mail_from = conf.get('email', 'TO')
+    cc = conf.get('email', 'CC')
+    subject = conf.get('email', 'SUBJECT')
 
     msg, recipients = build_msg_attach_file(mail_to, subject, mail_from, cc, body, file_name)
     send_smtp_email(mail_from, mail_to, msg)

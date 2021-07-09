@@ -10,4 +10,3 @@ def count_word(file_path, word):
 def odds_numbers(numbers):
     return sc.parallelize(numbers, 2) \
         .filter(lambda item: item % 2 != 0)
-

@@ -1,6 +1,8 @@
 .idea
 tests/.pytest_cache
 .pytest_cache
+.mypy_cache
+.isort.cfg
 src/api/*.log
 venv
 *__pycache__/

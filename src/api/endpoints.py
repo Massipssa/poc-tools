@@ -1,10 +1,12 @@
 import json
 import logging
-
-from flask import Flask, request, Response, jsonify, render_template, session as Fsession, redirect, url_for
 from functools import wraps
-from markupsafe import escape
 from typing import Callable, TypeVar, cast
+
+from flask import Flask, Response, jsonify, redirect, render_template, request
+from flask import session as Fsession
+from flask import url_for
+from markupsafe import escape
 
 from src.sql.model import Variable
 from src.sql.settings import create_session

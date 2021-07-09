@@ -1,8 +1,11 @@
 import logging
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+
+from sqlalchemy import Boolean, Column, DateTime, Integer, String
 from sqlalchemy.orm import backref, relationship
-from src.sql.settings import create_session
+
+from src.settings import create_session
 from src.sql.base import Base
+from src.sql.session import provide_session
 
 log = logging.getLogger(__name__)
 
@@ -16,6 +19,12 @@ class Variable(Base):
     value = Column(String)
     is_encrypted = Column(Boolean, unique=False, default=False)
 
+    """
+    def __init__(self, _key=None, value=None):
+        super.__init__()
+        self._key = _key
+        self.value = value
+    """
     def __str__(self):
         return "%d, %s" % (self.id, self._key)
 
@@ -24,15 +33,15 @@ class Variable(Base):
                f' Value: {self.value}, Is_encrypted: {self.is_encrypted}'
 
     @classmethod
-    #@provide_session
+    @provide_session
     def select_all(cls, session=None):
         result = session.query(Variable).all()
         session.close()
         return result
 
     @classmethod
-    def get_by_key(cls, key):
-        session = create_session()
+    def get_by_key(cls, key, session=None):
+        #session = create_session()
         item = session.query(Variable).filter(Variable._key == key).one()
         session.close()
         return item
@@ -89,7 +98,7 @@ class Job(Base):
     start_date = Column(DateTime)
     end_date = Column(DateTime)
 
-    # Relatioship
+    # Relationship
     tasks_instances = relationship(
         Task,
         primaryjoin=id == Task.job_id,
@@ -103,7 +112,7 @@ class Job(Base):
 
 if __name__ == "__main__":
 
-    
+
     addresses = Union[str, Iterable[str]]
     print(type(addresses).__name__)
 
@@ -161,5 +170,5 @@ if __name__ == "__main__":
         res = session.query(Variable).filter_by(id=1).first()
 
         # remove all objects from session
-        session.expunge_all() 
+        session.expunge_all()
 """

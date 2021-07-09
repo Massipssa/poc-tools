@@ -1,6 +1,8 @@
 import logging as logger
-from src.aws import create_client
+
 from botocore.exceptions import ClientError
+
+from src.aws import create_client
 
 s3_client = create_client('s3')
 

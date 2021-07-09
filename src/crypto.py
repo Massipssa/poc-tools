@@ -1,6 +1,8 @@
-from cryptography.fernet import Fernet
-from src.configuration import config
 import logging
+
+from cryptography.fernet import Fernet
+
+from src.configuration import config
 
 log = logging.getLogger(__name__)
 

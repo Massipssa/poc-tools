@@ -1,4 +1,4 @@
-from flask_appbuilder.models.sqla import Base
+#from flask_appbuilder.models.sqla import Base
 
 from src.sql import settings
 

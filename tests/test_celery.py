@@ -1,4 +1,5 @@
 import unittest
+
 from src.tasks import CeleryExecutor
 
 celery = CeleryExecutor

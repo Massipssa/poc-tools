@@ -1,8 +1,10 @@
 import logging
-from typing import List, Tuple, Optional, Union
-from celery import Celery
 from multiprocessing import cpu_count
-from src.configuration import config
+from typing import List, Optional, Tuple, Union
+
+from celery import Celery
+
+from src.configuration import conf
 
 log = logging.getLogger(__name__)
 
@@ -25,7 +27,7 @@ def reverse(string):
 
 class CeleryExecutor:
     def __init__(self):
-        if config.getint('celery', 'SYNC_PARALLELISM') == 0:
+        if conf.getint('celery', 'SYNC_PARALLELISM') == 0:
             self.num_cpu = max(1, cpu_count() - 1)
 
     def start(self) -> None:
@@ -42,4 +44,3 @@ if __name__ == '__main__':
     celery.start()
     celery.this_is_classmethod()
     print(cpu_count())
-

@@ -1,8 +1,7 @@
-from datetime import datetime, timedelta
-
+from airflow import DAG
 from airflow.providers.mysql.operators.mysql import MySqlOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
-from airflow import DAG
+from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'massi',

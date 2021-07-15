@@ -3,8 +3,8 @@
 
 
 1. [Description](#description)
-1. [Project Structure](#porject_strct)
-2. [How to use it](#usage)
+2. [Project Structure](#porject_strct)
+3. [How to use it](#usage)
 
 
 ## 1. Description

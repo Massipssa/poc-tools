@@ -2,17 +2,25 @@ pipeline {
     agent any
     stages {
 
-        stage('Build') {
+        /**
+        * Install requirements and test the code
+        */
+
+        stage('Install') {
             steps {
-                sh 'pip install -r requirements/requirements-python3.7.txt'
+                sh 'echo pip -V'
+                sh 'pip install -r requirements/requirements.txt'
             }
         }
-
         stage('Test') {
              steps {
                 sh 'pytest'
             }
         }
+
+        /*
+        * Run sonar analysis and checks quality gates
+        */
 
         stage('SonarQube analysis') {
             environment {
@@ -35,11 +43,12 @@ pipeline {
         }
 
         /*
+        * Deploy the project to
+        */
         stage('Deploy') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'python'
             }
         }
-        */
     }
 }

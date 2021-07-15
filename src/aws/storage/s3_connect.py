@@ -2,12 +2,16 @@ import logging as logger
 
 from botocore.exceptions import ClientError
 
-from src.aws import create_client
+
+def create_client(name):
+    pass
+
 
 s3_client = create_client('s3')
 
 
 def create_bucket(bucket_name, region=None):
+
     try:
         if region is None:
             s3_client.create_bucket(Bucket=bucket_name)
@@ -26,7 +30,7 @@ def list_all_bucket():
         print("{}".format(bucket["Name"]))
 
 
-def delte_bucket():
+def delete_bucket():
     pass
 
 

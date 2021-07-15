@@ -8,8 +8,10 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh 'echo pip -V'
-                sh 'pip install -r requirements/requirements.txt'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'echo pip -V'
+                    sh 'pip install -r requirements/requirements.txt'
+                }
             }
         }
         stage('Test') {

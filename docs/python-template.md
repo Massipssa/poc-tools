@@ -1,5 +1,13 @@
 
-## Python project template
+# Python project template
+
+
+1. [Description](#description)
+1. [Project Structure](#porject_strct)
+2. [How to use it](#redirect_ports)
+
+
+## 1. Description
 
 This section describes the architecture that each python project should respect. Using this template to create
 your project will help you to: 
@@ -11,6 +19,9 @@ your project will help you to:
 ##@ TODO:
 - the project should be created in github and user will have to specify project name
 - 
+
+
+## 2. Project Structure <a name="porject_strct"/>
 
 ```
 project-name
@@ -56,3 +67,5 @@ Below the **breve** description of the folders and the files within the project 
 - **README.md**: it contains a short description of the project's usage and utility. It may also describe how to use
     the project, how to install it if the installation is needed, and it can also list what you're planing to do in 
     the coming releases of your project.
+  
+## 3. How to use it <a name="usage" />  

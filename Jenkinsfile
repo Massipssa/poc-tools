@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'echo pip -V'
-                    sh 'pip install -r requirements/requirements.txt'
+                    sh 'python -m pip install -r requirements/requirements.txt'
                 }
             }
         }

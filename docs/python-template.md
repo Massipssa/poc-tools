@@ -4,7 +4,7 @@
 
 1. [Description](#description)
 1. [Project Structure](#porject_strct)
-2. [How to use it](#redirect_ports)
+2. [How to use it](#usage)
 
 
 ## 1. Description

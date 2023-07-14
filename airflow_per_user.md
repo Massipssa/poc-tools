@@ -1,0 +1,4 @@
+- Have a airflow image
+- Build a new image
+- Push new image
+- Run changes an a new image 

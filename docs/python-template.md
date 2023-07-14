@@ -64,8 +64,9 @@ Below the **breve** description of the folders and the files within the project 
 - **Jenkinsfile**
     - Define the **CI/CD** pipeline.   
 
-- **README.md**: it contains a short description of the project's usage and utility. It may also describe how to use
-    the project, how to install it if the installation is needed, and it can also list what you're planing to do in 
-    the coming releases of your project.
+- **README.md**
+  - It contains a short description of the project's usage and utility. 
+  - It may also describe how to use the project, how to install it if the installation is needed, and it can also list
+    what you're planing to do in the coming releases of your project.
   
 ## 3. How to use it <a name="usage" />  

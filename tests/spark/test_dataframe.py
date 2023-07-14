@@ -6,7 +6,7 @@ from src.spark.dataframe import (explain_df, read_csv, rows,
 
 class TestDataframe(unittest.TestCase):
 
-    path = "file:///E:/DEV/dev-python/learn-python/tests/data/flight-data/csv/2010-summary.csv"
+    path = "data/flight-data/csv/2010-summary.csv"
 
     def test_explain_df(self):
         explain_df(self.path)

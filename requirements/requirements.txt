@@ -15,3 +15,5 @@ azure-identity==1.6.0
 # New
 psycopg2
 flake8
+pandas
+pytest

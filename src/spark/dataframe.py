@@ -106,7 +106,7 @@ def df_transformations(df: DataFrame):
 def read_df(path: str, mode: str):
     """
     mode:
-        - permissive (default): sets all fields to null when it encounter corrupted records
+        - permissive (default): sets all fields to null when it encounters corrupted records
          and places them to string column called _corrupt_record
         - dropMalFormed: drop rows that contain malformed records
         - failFast: Fails immediate upon encountering corrupted records

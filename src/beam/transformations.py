@@ -21,3 +21,6 @@ if __name__ == '__main__':
         word_lengths = (pipeline
                        | "Count " >> beam.ParDo(ComputeWordLengthFn()))
     """
+
+    # this is just a test
+    # this is just a test

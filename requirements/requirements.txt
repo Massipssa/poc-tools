@@ -18,3 +18,7 @@ flake8
 pandas
 pytest
 apache-beam
+
+
+## gcp
+google-cloud-pubsub

@@ -3,6 +3,8 @@ import time
 from google.cloud import pubsub_v1
 from concurrent.futures import TimeoutError
 
+from google.pubsub_v1 import PublisherClient
+
 project_id = "phonic-agility-279410"
 topic_id = "my-topic"
 subscription_id = "my-sub"
@@ -49,6 +51,12 @@ def subscribe():
         except TimeoutError:
             streaming_pull_future.cancel()  # Trigger the shutdown.
             streaming_pull_future.result()  # Block until the shutdown is complete.
+
+def exactly_once(topic_name: str, publish: PublisherClient):
+    """
+    Perform exactly-once between pub-sub and Beam
+    """
+    publish.publish(topic_name, id="my-id")
 
 
 if __name__ == '__main__':

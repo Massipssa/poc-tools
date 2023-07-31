@@ -26,3 +26,6 @@ if __name__ == '__main__':
                 | "Create elements" >> beam.Create(["line1", "line2", "line3"])
                 | "Print elements" >> beam.Map(print))
         pipeline.run().wait_until_finish()
+
+
+

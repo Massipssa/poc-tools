@@ -11,7 +11,6 @@ s3_client = create_client('s3')
 
 
 def create_bucket(bucket_name, region=None):
-
     try:
         if region is None:
             s3_client.create_bucket(Bucket=bucket_name)

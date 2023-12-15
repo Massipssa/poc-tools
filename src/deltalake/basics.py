@@ -50,5 +50,3 @@ if __name__ == '__main__':
         .execute()
 
     deltaTable.toDF().show()
-
-    #spark.stop()

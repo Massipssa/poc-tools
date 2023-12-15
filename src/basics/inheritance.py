@@ -25,9 +25,7 @@ Manager inherit from Person
 class Manager(Person):
 
     test = "test_value"
-    """
-    This is a constructor 
-    """
+
     def __init__(self, uid, name, salary, sex, password):
         super().__init__(uid, name)
         self.salary = salary

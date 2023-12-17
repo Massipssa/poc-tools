@@ -5,7 +5,7 @@ tests/.pytest_cache
 .isort.cfg
 src/api/*.log
 venv
-*__pycache__/
+__pycache__
 *.log
 # dist
 learn_python.egg-info

@@ -117,7 +117,7 @@ def get_email_list_from_str(addresses: str) -> List[str]:
 
 if __name__ == '__main__':
 
-    file_name = "E:/DEV/dev-python/learn-python/conf/result.xlsx"
+    file_name = "./conf/result.xlsx"
     body = "Hello, \n Please find attached file ..."
 
     send_email(body, file_name)

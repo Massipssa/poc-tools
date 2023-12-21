@@ -5,7 +5,7 @@ from concurrent.futures import TimeoutError
 
 from google.pubsub_v1 import PublisherClient
 
-project_id = "phonic-agility-279410"
+project_id = "phonic-agility-XXXXXXX"
 topic_id = "my-topic"
 subscription_id = "my-sub"
 # Number of seconds the subscriber should listen for messages

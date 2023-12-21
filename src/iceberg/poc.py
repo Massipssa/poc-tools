@@ -74,5 +74,3 @@ if __name__ == "__main__":
     spark.sql(f"SELECT * FROM {table_name}.snapshots").show(2, truncate=False)
     spark.read.option("snapshot-id", "2133194735081165190").table(table_name).show()
     spark.read.option("as-of-timestamp", "2133194735081165190").table(table_name).show()
-
-    

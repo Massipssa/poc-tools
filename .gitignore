@@ -12,3 +12,4 @@ learn_python.egg-info
 dist
 build
 warehouse
+spark-warehouse

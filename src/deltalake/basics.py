@@ -5,7 +5,7 @@ from delta import *
 
 if __name__ == '__main__':
 
-    tmp_path = "/tmp1/delta-table"
+    tmp_path = "tmp1/delta-table"
 
     builder = pyspark.sql\
         .SparkSession\
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     data = spark.range(0, 5)
 
     # create table
-    data.write.format("delta").save(tmp_path)
+    data.write.format("delta").save(tmp_path, mode="overwrite")
 
     # load data
     df = spark.read.format("delta").load(tmp_path)
@@ -34,6 +34,8 @@ if __name__ == '__main__':
     deltaTable.update(
         condition=expr("id % 2 == 0"),
         set={"id": expr("id + 100")})
+    print("Update...")
+    deltaTable.toDF().show()
 
     # Delete every even value
     deltaTable.delete(condition=expr("id % 2 == 0"))
@@ -50,3 +52,9 @@ if __name__ == '__main__':
         .execute()
 
     deltaTable.toDF().show()
+
+
+    import time
+    time.sleep(120)
+
+    spark.stop()

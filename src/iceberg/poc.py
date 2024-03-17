@@ -41,7 +41,7 @@ if __name__ == "__main__":
     iceberg_df = spark.read.format("iceberg").load(f"{table_name}")
     iceberg_df.printSchema()
     iceberg_df.show()
-
+  
     # Schema evolution
     spark.sql(f"ALTER TABLE {table_name} RENAME COLUMN job_title TO job")
     spark.sql(f"ALTER TABLE {table_name} ALTER COLUMN age TYPE bigint")
@@ -62,13 +62,15 @@ if __name__ == "__main__":
     # Partitioning the table
     spark.sql(f"ALTER TABLE {table_name} ADD PARTITION FIELD age")
     spark.read.format("iceberg").load(f"{table_name}").where("age = 28").show()
+    
 
     spark.sql(f"""
         CREATE TABLE IF NOT EXISTS {table_name}
         (name STRING, age INT, job STRING, salary INT)
         USING iceberg
         PARTITIONED BY (age)
-    """)
+        """
+    )
     
     # Time travel 
     spark.sql(f"SELECT * FROM {table_name}.snapshots").show(2, truncate=False)

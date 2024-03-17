@@ -4,7 +4,7 @@ import requests
 
 VAULT_HOST = 'http://127.0.0.1:8200'
 VAULT_TOKEN = 'root'
-PATH = 'database/creds/my-role'
+PATH = 'database/creds/test-role'
 
 
 def read_dynamic_pwd_request(): 
@@ -14,11 +14,12 @@ def read_dynamic_pwd_request():
         params={'q': 'requests+language:python'},
         headers={'X-Vault-Token': VAULT_TOKEN},
     )
-    if response and 'data' in response:
+    if response:
         json_response = response.json()
-        USER = json_response['data']['username']
-        PASSWORD = json_response['data']['password']
-        print(f"User: {USER}, Password:  {PASSWORD}")
+        print(json_response)
+        user = json_response['data']['username']
+        password = json_response['data']['password']
+        print(f"User: {user}, Password:  {password}")
 
 
 def read_dynamic_pwd_with_hvac(): 
@@ -27,7 +28,6 @@ def read_dynamic_pwd_with_hvac():
         url=VAULT_HOST,
         token=VAULT_TOKEN,
     )
-
     response = client.read(PATH)
     if response and 'data' in response:
         secret_data = response['data']

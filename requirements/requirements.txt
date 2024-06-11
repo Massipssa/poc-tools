@@ -16,7 +16,7 @@ pyspark==3.4.1
 
 ## Azure
 azure-mgmt-resource==18.0.0
-azure-identity==1.6.0
+azure-identity==1.16.1
 azure-keyvault-secrets
 
 # New

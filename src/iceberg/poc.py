@@ -10,7 +10,14 @@ if __name__ == "__main__":
     catalog_name = "demo"
 
     # setup iceberg config
-    conf = SparkConf().setAppName("YourAppName") \
+    """
+    - catalog name 
+    - catalog type
+    - warehouse
+    """
+
+    conf = SparkConf()\
+        .setAppName("YourAppName") \
         .set("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") \
         .set(f"spark.sql.catalog.{catalog_name}", "org.apache.iceberg.spark.SparkCatalog") \
         .set('spark.jars.packages', iceberg_spark_jar) \
@@ -37,16 +44,39 @@ if __name__ == "__main__":
     
     # write and read Iceberg table
     table_name = "db.persons"
-    df.write.format("iceberg").mode("overwrite").saveAsTable(f"{table_name}")
-    iceberg_df = spark.read.format("iceberg").load(f"{table_name}")
+    spark.sql(f"""
+    CREATE TABLE IF NOT EXISTS {table_name} (
+        name STRING,
+        age INT,
+        job_title STRING
+    )
+    USING iceberg
+    PARTITIONED BY (age)
+    """)
+    
+    """
+    
+    df.write\
+        .format("iceberg")\
+        .mode("overwrite")\
+        .saveAsTable(f"{table_name}")
+    """
+    
+    iceberg_df = spark\
+        .read\
+        .format("iceberg")\
+        .load(f"{table_name}")
     iceberg_df.printSchema()
     iceberg_df.show()
   
     # Schema evolution
-    spark.sql(f"ALTER TABLE {table_name} RENAME COLUMN job_title TO job")
+    #spark.sql(f"ALTER TABLE {table_name} RENAME COLUMN job_title TO job")
     spark.sql(f"ALTER TABLE {table_name} ALTER COLUMN age TYPE bigint")
-    spark.sql(f"ALTER TABLE {table_name} ADD COLUMN salary FLOAT AFTER job")
-    iceberg_df = spark.read.format("iceberg").load(f"{table_name}")
+    #spark.sql(f"ALTER TABLE {table_name} ADD COLUMN salary FLOAT AFTER job")
+    iceberg_df = spark \
+        .read\
+        .format("iceberg")\
+        .load(f"{table_name}")
     iceberg_df.printSchema()
     iceberg_df.show()
 
@@ -60,19 +90,25 @@ if __name__ == "__main__":
     spark.sql(f"SELECT * FROM {table_name}.snapshots").show()
 
     # Partitioning the table
-    spark.sql(f"ALTER TABLE {table_name} ADD PARTITION FIELD age")
-    spark.read.format("iceberg").load(f"{table_name}").where("age = 28").show()
+    #spark.sql(f"ALTER TABLE {table_name} ADD PARTITION FIELD age")
+    spark\
+        .read\
+        .format("iceberg")\
+        .load(f"{table_name}")\
+        .where("age = 28")\
+        .show()
     
+    #spark.sql(f"""
+    #    CREATE TABLE IF NOT EXISTS {table_name}
+    #    (name STRING, age INT, job STRING, salary INT)
+    #    USING iceberg
+    #    PARTITIONED BY (age)
+    #    """
+    #)
 
-    spark.sql(f"""
-        CREATE TABLE IF NOT EXISTS {table_name}
-        (name STRING, age INT, job STRING, salary INT)
-        USING iceberg
-        PARTITIONED BY (age)
-        """
-    )
-    
     # Time travel 
-    spark.sql(f"SELECT * FROM {table_name}.snapshots").show(2, truncate=False)
-    spark.read.option("snapshot-id", "2133194735081165190").table(table_name).show()
-    spark.read.option("as-of-timestamp", "2133194735081165190").table(table_name).show()
+    print("----- Time Travel -----")
+    spark.sql(f"SELECT * FROM {catalog_name}.{table_name}.history").show(truncate=False)
+    spark.sql(f"SELECT * FROM {table_name}.snapshots").show()
+    spark.read.option("snapshot-id", "1294476440295122114").table(table_name).show()
+    spark.read.option("as-of-timestamp", "2025-07-05 00:00:00.000").table(table_name).show()

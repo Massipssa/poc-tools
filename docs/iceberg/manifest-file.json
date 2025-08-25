@@ -1,0 +1,22 @@
+{
+"data_file" : {
+    "file_path" : "s3://datalake/db1/orders/data/order_ts_hour=2023-01-27-10/0_0_0.parquet",
+    "file_format" : "PARQUET",
+    "block_size_in_bytes" : 67108864,
+    "null_value_counts" : [],
+    "lower_bounds" : {
+	"array": [{
+        "key": 1,
+		"value": 125
+    }]
+    },
+    "upper_bounds" : {
+	"array": [
+        {
+            "key": 1,
+		    "value": 125
+        }
+    ]
+    }
+   }
+}

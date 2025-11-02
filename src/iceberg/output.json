@@ -1,0 +1,31 @@
+{
+  "manifest_path": "warehouse/db/persons/metadata/d9b53757-55a3-4f7e-80b6-926ce7edac4b-m0.avro",
+  "manifest_length": 6930,
+  "partition_spec_id": 0,
+  "content": 0,
+  "sequence_number": 1,
+  "min_sequence_number": 1,
+  "added_snapshot_id": 2093926769621697207,
+  "added_data_files_count": 1,
+  "existing_data_files_count": 0,
+  "deleted_data_files_count": 0,
+  "added_rows_count": 1,
+  "existing_rows_count": 0,
+  "deleted_rows_count": 0,
+  "partitions": {
+    "array": [
+      {
+        "contains_null": false,
+        "contains_nan": {
+          "boolean": false
+        },
+        "lower_bound": {
+          "bytes": "2\u0000\u0000\u0000"
+        },
+        "upper_bound": {
+          "bytes": "2\u0000\u0000\u0000"
+        }
+      }
+    ]
+  }
+}

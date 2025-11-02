@@ -1,0 +1,113 @@
+{
+  "status": 1,
+  "snapshot_id": {
+    "long": 2093926769621697207
+  },
+  "sequence_number": null,
+  "file_sequence_number": null,
+  "data_file": {
+    "content": 0,
+    "file_path": "warehouse/db/persons/data/age=50/00000-1-a3af8354-0914-4e6f-a7a6-82c980a4cfc1-00001.parquet",
+    "file_format": "PARQUET",
+    "partition": {
+      "age": {
+        "int": 50
+      }
+    },
+    "record_count": 1,
+    "file_size_in_bytes": 907,
+    "column_sizes": {
+      "array": [
+        {
+          "key": 1,
+          "value": 43
+        },
+        {
+          "key": 2,
+          "value": 36
+        },
+        {
+          "key": 3,
+          "value": 43
+        }
+      ]
+    },
+    "value_counts": {
+      "array": [
+        {
+          "key": 1,
+          "value": 1
+        },
+        {
+          "key": 2,
+          "value": 1
+        },
+        {
+          "key": 3,
+          "value": 1
+        }
+      ]
+    },
+    "null_value_counts": {
+      "array": [
+        {
+          "key": 1,
+          "value": 0
+        },
+        {
+          "key": 2,
+          "value": 0
+        },
+        {
+          "key": 3,
+          "value": 0
+        }
+      ]
+    },
+    "nan_value_counts": {
+      "array": []
+    },
+    "lower_bounds": {
+      "array": [
+        {
+          "key": 1,
+          "value": "Charlie"
+        },
+        {
+          "key": 2,
+          "value": "2\u0000\u0000\u0000"
+        },
+        {
+          "key": 3,
+          "value": "Teacher"
+        }
+      ]
+    },
+    "upper_bounds": {
+      "array": [
+        {
+          "key": 1,
+          "value": "Charlie"
+        },
+        {
+          "key": 2,
+          "value": "2\u0000\u0000\u0000"
+        },
+        {
+          "key": 3,
+          "value": "Teacher"
+        }
+      ]
+    },
+    "key_metadata": null,
+    "split_offsets": {
+      "array": [
+        4
+      ]
+    },
+    "equality_ids": null,
+    "sort_order_id": {
+      "int": 0
+    }
+  }
+}

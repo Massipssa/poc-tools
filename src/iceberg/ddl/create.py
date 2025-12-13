@@ -9,14 +9,15 @@ if __name__ == "__main__":
 
     # Creating table using command CREATE TABLE using Spark SQL
     spark.sql(f"""
-    CREATE TABLE IF NOT EXISTS catalog_demo.ecommerce_db.consumers (
-        consumer_id STRING,
-        name STRING,
-        age INT,
-        address STRING,
-        email STRING
-    )
     USING iceberg
+    CREATE TABLE orders (
+       order_id BIGINT,
+       customer_id BIGINT,
+       order_amount DECIMAL(10, 2),
+       order_ts TIMESTAMP
+    ) 
+    USING iceberg
+    PARTITIONED BY (HOUR(order_ts))
     """)
 
     # Define the schema
@@ -54,11 +55,15 @@ if __name__ == "__main__":
     ])
     # Create an empty DataFrame with the schema
     df = spark.createDataFrame([], schema)
-    # Write the DataFrame to the catalog as a new table
-    df.writeTo("catalog_demo.ecommerce_db.emp_partitioned1").partitionedBy(col("department")).create()
 
-    spark.sql("""
-        CREATE TABLE IF NOT EXISTS catalog_demo.ecommerce_db.emp_partitioned_month (
+    # Write the DataFrame to the catalog as a new table
+    df\
+        .writeTo("catalog_demo.ecommerce_db.emp_partitioned1")\
+        .partitionedBy(col("department")).create()
+
+    tab_name = "catalog_demo.ecommerce_db.emp_partitioned_month"
+    spark.sql(f"""
+        CREATE TABLE IF NOT EXISTS {tab_name} (
             id INT,
             role STRING,
             department STRING,
@@ -69,8 +74,8 @@ if __name__ == "__main__":
     """)
 
     # --- insert raw sample rows ---
-    spark.sql("""
-    INSERT INTO catalog_demo.ecommerce_db.emp_partitioned_month VALUES
+    spark.sql(f"""
+    INSERT INTO {tab_name} VALUES
       (1, 'Data Engineer',     'Platform',   DATE '2025-01-15'),
       (2, 'Analytics Engineer','BI',         DATE '2025-01-31'),
       (3, 'ML Engineer',       'ML',         DATE '2025-02-01'),
@@ -79,8 +84,8 @@ if __name__ == "__main__":
     """)
 
     # --- quick sanity checks ---
-    spark.sql("""
-    SELECT * 
-    FROM catalog_demo.ecommerce_db.emp_partitioned_month
-    ORDER BY join_date, id
+    spark.sql(f"""
+        SELECT * 
+        FROM {tab_name}
+        ORDER BY join_date, id
     """).show(truncate=False)

@@ -2,8 +2,8 @@ from fastavro import reader, json_writer
 
 if __name__ == '__main__':
 
-    in_path = "warehouse/db/persons/metadata/snap-2093926769621697207-1-d9b53757-55a3-4f7e-80b6-926ce7edac4b.avro"
-    out_path = "output.json"
+    in_path = "../warehouse/local/db_demo/metadata/snap-2869477313903844226-1-abf58eec-099e-4a18-a3d8-df20429efde5.avro"
+    out_path = "data/snap-output.json"
 
     with open(in_path, "rb") as f_in:
         avro_reader = reader(f_in)
